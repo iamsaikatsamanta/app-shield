@@ -40,7 +40,7 @@ exports.prompt = (codelock_config, fileFound = false) => {
         name: "scan_frequency",
         type: "number",
         message:
-          "Please enter how freequent you wnat to scan your code in minutes? (1-59)",
+          "Please enter how frequent you want to scan your code in minutes",
         default: codelock_config ? codelock_config.scan_frequency : 5,
       },
     ])
