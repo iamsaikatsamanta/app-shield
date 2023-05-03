@@ -113,7 +113,7 @@ program.command("unlink").action(async (name) => {
             process.exit(1);
           }
           const data = await axios.post(
-            "https://api.codelock.ai/api/v1/remove-project",
+            "https://api.appshield.bayshoreintel.com/api/v1/remove-project",
             { project_id: credentials.project_id },
             {
               auth: {

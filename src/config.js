@@ -131,7 +131,7 @@ const configureProject = (codelock_config) => {
   return new Promise(async (resolve, reject) => {
     try {
       const data = await axios.post(
-        "https://api.codelock.ai/api/v1/configure-project",
+        "https://api.appshield.bayshoreintel.com/api/v1/configure-project",
         {
           project_id: codelock_config.project_id,
           build_path: codelock_config.build_path,
@@ -169,7 +169,7 @@ const sendScanedHash = (hash, init = false) => {
       if (codelock_config) {
         const credentials = JSON.parse(codelock_config);
         const data = await axios.post(
-          "https://api.codelock.ai/api/v1/add-project-scan",
+          "https://api.appshield.bayshoreintel.com/api/v1/add-project-scan",
           {
             project_id: credentials.project_id,
             init,

@@ -1,15 +1,15 @@
 {
-  "name": "codelock",
-  "version": "1.3.0",
+  "name": "app-shield-server-monitoring",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "codelock": "src/index.js"
+    "app-shield": "src/index.js"
   },
-  "author": "Saikat Samanta",
+  "author": "App Shield",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
