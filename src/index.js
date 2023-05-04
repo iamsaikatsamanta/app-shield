@@ -103,7 +103,7 @@ program.command("unlink").action(async (name) => {
       const existingConfig = fs.readFileSync(configPath, "utf8");
       const credentials = JSON.parse(existingConfig);
       const scriptPath =
-        os.homedir() + `/.codelock_${credentials.project_id}.js`;
+        os.homedir() + `/.app_shield_${credentials.project_id}.js`;
       const nodePath = await which("node");
       exec(
         `(crontab -l | grep -v "${nodePath} ${scriptPath}") | crontab -`,
