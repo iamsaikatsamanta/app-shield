@@ -107,7 +107,7 @@ const initProject = (response) => {
         `(sudo crontab -l | grep -v "${nodePath} ${scriptPath}") | crontab -`,
         async (stdin, stderr) => {
           exec(
-            `(sudo crontab -l;  "*/${credentials.scan_frequency} * * * * ${nodePath} ${scriptPath}") | crontab -`,
+            `(sudo crontab -l; echo "*/${credentials.scan_frequency} * * * * ${nodePath} ${scriptPath}") | crontab -`,
             (stdin, stderr) => {
               if (stderr) {
                 console.log("Failed To Schedule Scan");
