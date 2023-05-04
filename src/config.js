@@ -104,10 +104,10 @@ const initProject = (response) => {
         `#!/usr/bin/env node\nconst exec = require('child_process').exec;\nexec('app-shield scan', (stdin, stderr)=>{console.log(stderr);});`
       );
       exec(
-        `(crontab -l | grep -v "${nodePath} ${scriptPath}") | crontab -`,
+        `(sudo crontab -l | grep -v "${nodePath} ${scriptPath}") | crontab -`,
         async (stdin, stderr) => {
           exec(
-            `(crontab -l;  "*/${credentials.scan_frequency} * * * * ${nodePath} ${scriptPath}") | crontab -`,
+            `(sudo crontab -l;  "*/${credentials.scan_frequency} * * * * ${nodePath} ${scriptPath}") | crontab -`,
             (stdin, stderr) => {
               if (stderr) {
                 console.log("Failed To Schedule Scan");
