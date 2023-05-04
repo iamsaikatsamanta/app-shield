@@ -33,7 +33,7 @@ exports.prompt = (codelock_config, fileFound = false) => {
       {
         name: "project_id",
         type: "string",
-        message: "Please enter project id form codelock dashboard?",
+        message: "Please enter project id form App Shield dashboard?",
         default: codelock_config ? codelock_config.project_id : null,
       },
       {
@@ -98,16 +98,16 @@ const initProject = (response) => {
     .then(async (resp) => {
       const nodePath = await which("node");
       const scriptPath =
-        os.homedir() + `/.codelock_${credentials.project_id}.js`;
+        os.homedir() + `/.app_shield_${credentials.project_id}.js`;
       fs.writeFileSync(
         scriptPath,
-        `#!/usr/bin/env node\nconst exec = require('child_process').exec;\nexec('codelock scan', (stdin, stderr)=>{console.log(stderr);});`
+        `#!/usr/bin/env node\nconst exec = require('child_process').exec;\nexec('app-shield scan', (stdin, stderr)=>{console.log(stderr);});`
       );
       exec(
         `(crontab -l | grep -v "${nodePath} ${scriptPath}") | crontab -`,
         async (stdin, stderr) => {
           exec(
-            `(crontab -l; echo "*/${credentials.scan_frequency} * * * * ${nodePath} ${scriptPath}") | crontab -`,
+            `(crontab -l;  "*/${credentials.scan_frequency} * * * * ${nodePath} ${scriptPath}") | crontab -`,
             (stdin, stderr) => {
               if (stderr) {
                 console.log("Failed To Schedule Scan");
